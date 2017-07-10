@@ -13,7 +13,7 @@ token = secrets['token']
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
-  		
+      
   case message.text
   when '/start'
     bot.api.send_message(
@@ -26,12 +26,12 @@ Telegram::Bot::Client.run(token) do |bot|
       text: "Bye, #{message.from.first_name}"
     )
   when '/showcar'
-  	bot.api.send_photo(
+    bot.api.send_photo(
       chat_id: message.chat.id,
       photo: CARS.sample
     )
   when '/frases'
-  	bot.api.send_message(
+    bot.api.send_message(
       chat_id: message.chat.id,
       text: FRASES.sample
     )
@@ -41,18 +41,18 @@ Telegram::Bot::Client.run(token) do |bot|
       audio: 'CQADAgADNQADUB0gS54ER50b-6FQAg'
     )
   when '/help'
-		bot.api.send_message(
-			chat_id: message.chat.id, 
-			text: "/start - start conversation
+    bot.api.send_message(
+      chat_id: message.chat.id, 
+      text: "/start - start conversation
       /showcar - show photos of automobiles
       /frases - give you a frase
       /stop - say goodbye to user
       /music - give you a song"
     )
   else
-		bot.api.send_message(
-		  chat_id: message.chat.id, 
-		  text: "I don't understand what are you talking about."
+    bot.api.send_message(
+      chat_id: message.chat.id, 
+      text: "I don't understand what are you talking about."
     )
   end
   
