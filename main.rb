@@ -51,7 +51,7 @@ Telegram::Bot::Client.run(token) do |bot|
   else
     bot.api.send_message(
       chat_id: message.chat.id, 
-      text: "I don't understand what are you talking about."
+      text: "I don't understand what you are talking about."
     )
   end
   
