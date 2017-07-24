@@ -3,7 +3,7 @@ require 'yaml'
 
 CARS = %w(https://otvet.imgsmail.ru/download/215030284_bf361ada6ac3cecf842d8eaa401f4314_800.jpg http://farm8.static.flickr.com/7656/17346148161_4bbdb70902.jpg 
 http://assets.volvocars.com/intl/~/media/shared-assets/images/galleries/inside/our-company/heritage/heritage-models/43_volvo740_sedan_large.jpg?w=480).freeze
-PHRASES = %W(#{"Keep calm"} #{"Code in Ruby"}).freeze
+PHRASES = ["Keep calm", "Code in Ruby"]
 MUSIC = {"/home/james/work/bot_archive/Survivor Eye of the Tiger - Eye of the Tiger.mp3" => "CQADAgADMwADUB0gS0rbxrYvbayWAg"}.freeze
                                                                                               
 secrets = YAML.load_file('secrets.yml')
