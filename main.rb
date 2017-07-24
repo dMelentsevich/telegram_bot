@@ -1,11 +1,10 @@
 require 'telegram/bot'
 require 'yaml'
 
-CARS = ["https://otvet.imgsmail.ru/download/215030284_bf361ada6ac3cecf842d8eaa401f4314_800.jpg",
- "http://farm8.static.flickr.com/7656/17346148161_4bbdb70902.jpg",
-"http://assets.volvocars.com/intl/~/media/shared-assets/images/galleries/inside/our-company/heritage/heritage-models/43_volvo740_sedan_large.jpg?w=480"]
-FRASES = ["Keep calm", "Code in Ruby"]
-MUSIC = { "/home/james/work/bot_archive/Survivor Eye of the Tiger - Eye of the Tiger.mp3" => "CQADAgADMwADUB0gS0rbxrYvbayWAg" }
+CARS = %w(https://otvet.imgsmail.ru/download/215030284_bf361ada6ac3cecf842d8eaa401f4314_800.jpg http://farm8.static.flickr.com/7656/17346148161_4bbdb70902.jpg 
+http://assets.volvocars.com/intl/~/media/shared-assets/images/galleries/inside/our-company/heritage/heritage-models/43_volvo740_sedan_large.jpg?w=480).freeze
+PHRASES = %W(#{"Keep calm"} #{"Code in Ruby"}).freeze
+MUSIC = {"/home/james/work/bot_archive/Survivor Eye of the Tiger - Eye of the Tiger.mp3" => "CQADAgADMwADUB0gS0rbxrYvbayWAg"}.freeze
                                                                                               
 secrets = YAML.load_file('secrets.yml')
 token = secrets['token']
@@ -30,10 +29,10 @@ Telegram::Bot::Client.run(token) do |bot|
       chat_id: message.chat.id,
       photo: CARS.sample
     )
-  when '/frases'
+  when '/phrases'
     bot.api.send_message(
       chat_id: message.chat.id,
-      text: FRASES.sample
+      text: PHRASES.sample
     )
   when '/music'
     bot.api.send_audio(
@@ -45,7 +44,7 @@ Telegram::Bot::Client.run(token) do |bot|
       chat_id: message.chat.id, 
       text: "/start - start conversation
       /showcar - show photos of automobiles
-      /frases - give you a frase
+      /phrases - give you a frase
       /stop - say goodbye to user
       /music - give you a song"
     )
